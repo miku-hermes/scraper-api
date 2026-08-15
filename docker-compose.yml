@@ -1,18 +1,18 @@
 services:
   scraper-api:
-    build: .
-    image: scraper-api:latest
+    image: ghcr.io/miku-hermes/scraper-api:latest
     container_name: scraper-api
     restart: unless-stopped
     networks:
       1panel-network:
         ipv4_address: 172.18.0.10
     volumes:
-      - ./cache:/app/cache
+      - ./cache:/app/scraper/cache
     environment:
       - NODE_ENV=production
       - PORT=3200
-      - CAMOFOX_URL=http://172.18.0.5:9377
+      # 镜像内置浏览器（camofox 9377 本机），不需要外部地址
+      - CAMOFOX_URL=http://127.0.0.1:9377
     expose:
       - "3200"
 
