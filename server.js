@@ -132,7 +132,7 @@ app.get('/api/detail', async (req, res) => {
     status: found.status,
     intro: found.intro,
     tags: [found.category].filter(Boolean),
-    cover_url: found.cover ? found.cover.replace(/\/150$/, '/420') : '',
+    cover_url: found.cover ? found.cover.replace(/\/150$/, '/300') : '',
     bid: found.bid,
   };
   cacheSet(cacheKey, result);
